@@ -1,4 +1,4 @@
-package proj.wsmobileapp.app.ws.model.request;
+package proj.wsmobileapp.app.ws.ui.model.request;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

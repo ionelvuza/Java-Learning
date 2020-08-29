@@ -1,11 +1,8 @@
 package proj.wsmobileapp.app.ws.ui.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.wsmobileapp.app.ws.model.request.UserDetailsRequestModel;
-import proj.wsmobileapp.app.ws.model.request.UserDetailsUpdateRequestModel;
+import proj.wsmobileapp.app.ws.ui.model.request.UserDetailsRequestModel;
+import proj.wsmobileapp.app.ws.ui.model.request.UserDetailsUpdateRequestModel;
 import proj.wsmobileapp.app.ws.ui.model.response.UserRest;
+import proj.wsmobileapp.app.ws.userservice.UserService;
 
 @RestController
 @RequestMapping("users") // http://localhost:8080/users
 public class UserController {
 
-	Map<String, UserRest> users;
+	@Autowired
+	UserService userService;
 	
 	@GetMapping
 	public String getUsers(
@@ -47,8 +46,8 @@ public class UserController {
 			})
 	public ResponseEntity<UserRest> getUser(@PathVariable String userId) {
 		
-		if (users.containsKey(userId)) {
-			return new ResponseEntity<>(users.get(userId), HttpStatus.OK);
+		if (userService.hasUser(userId)){
+			return new ResponseEntity<>(userService.getUser(userId), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
@@ -66,18 +65,9 @@ public class UserController {
 			})
 	public ResponseEntity<UserRest> createUser(@Valid @RequestBody UserDetailsRequestModel userDetails) {
 		
-		UserRest returnvalue = new UserRest();
-		String userId = UUID.randomUUID().toString();
 		
-		returnvalue.setEmail(userDetails.getEmail());
-		returnvalue.setFirstName(userDetails.getFirstName());
-		returnvalue.setLastName(userDetails.getLastName());
-		returnvalue.setUserId(userId);
-		
-		if (users == null) users = new HashMap<>();
-		users.put(userId, returnvalue);
-		
-		return new ResponseEntity<UserRest>(returnvalue, HttpStatus.OK);
+		UserRest returnValue = userService.createUser(userDetails);		
+		return new ResponseEntity<UserRest>(returnValue, HttpStatus.OK);
 	}
 	
 	
@@ -93,12 +83,11 @@ public class UserController {
 					})
 	public UserRest updateUser(@PathVariable String userId, @Valid @RequestBody UserDetailsUpdateRequestModel userDetails) {
 		
-		 UserRest storedUserDetails = users.get(userId);
+		 UserRest storedUserDetails = userService.getUser(userId);
 		 storedUserDetails.setFirstName(userDetails.getFirstName());
 		 storedUserDetails.setLastName(userDetails.getLastName());
 		 
-		 users.put(userId, storedUserDetails);
-		 
+		 userService.updateUser(userId, storedUserDetails);
 		 return storedUserDetails;
 	}
 	
@@ -106,7 +95,7 @@ public class UserController {
 	@DeleteMapping(path= "/{userId}")
 	public ResponseEntity<Void> deleteUser(@PathVariable String userId) {
 		
-		users.remove(userId);
+		userService.deleteUser(userId);
 		return ResponseEntity.noContent().build();
 	}
 }
