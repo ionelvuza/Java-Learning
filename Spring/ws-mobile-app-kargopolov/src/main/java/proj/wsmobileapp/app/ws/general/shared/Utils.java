@@ -1,4 +1,4 @@
-package proj.wsmobileapp.app.ws.shared;
+package proj.wsmobileapp.app.ws.general.shared;
 
 import java.util.UUID;
 

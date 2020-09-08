@@ -1,4 +1,4 @@
-package proj.wsmobileapp.app.ws.userservice.impl;
+package proj.wsmobileapp.app.ws.services.userservice.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,10 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proj.wsmobileapp.app.ws.shared.Utils;
+import proj.wsmobileapp.app.ws.general.shared.Utils;
+import proj.wsmobileapp.app.ws.services.userservice.UserService;
 import proj.wsmobileapp.app.ws.ui.model.request.UserDetailsRequestModel;
 import proj.wsmobileapp.app.ws.ui.model.response.UserRest;
-import proj.wsmobileapp.app.ws.userservice.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{

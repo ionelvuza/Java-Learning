@@ -1,4 +1,4 @@
-package proj.wsmobileapp.app.ws.userservice;
+package proj.wsmobileapp.app.ws.services.userservice;
 
 import proj.wsmobileapp.app.ws.ui.model.request.UserDetailsRequestModel;
 import proj.wsmobileapp.app.ws.ui.model.response.UserRest;

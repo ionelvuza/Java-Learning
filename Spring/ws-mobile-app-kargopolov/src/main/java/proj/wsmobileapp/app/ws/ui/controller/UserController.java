@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import proj.wsmobileapp.app.ws.services.userservice.UserService;
 import proj.wsmobileapp.app.ws.ui.model.request.UserDetailsRequestModel;
 import proj.wsmobileapp.app.ws.ui.model.request.UserDetailsUpdateRequestModel;
 import proj.wsmobileapp.app.ws.ui.model.response.UserRest;
-import proj.wsmobileapp.app.ws.userservice.UserService;
 
 @RestController
 @RequestMapping("users") // http://localhost:8080/users

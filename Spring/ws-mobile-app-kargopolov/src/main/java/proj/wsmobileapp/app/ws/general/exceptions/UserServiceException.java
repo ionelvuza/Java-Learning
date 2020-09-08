@@ -1,4 +1,4 @@
-package proj.wsmobileapp.app.ws.exceptions;
+package proj.wsmobileapp.app.ws.general.exceptions;
 
 public class UserServiceException extends RuntimeException {
 	
