@@ -5,10 +5,8 @@ import proj.wsmobileapp.app.ws.ui.model.response.UserRest;
 
 public interface UserService {
 	UserRest createUser(UserDetailsRequestModel userDetails);
-
-	boolean  hasUser(String userId);
-	UserRest createUser(String userId);
-	UserRest getUser(String userId);
+	boolean  hasUser   (String userId);
+	UserRest getUser   (String userId);
 	void     deleteUser(String userId);
 	void     updateUser(String userId, UserRest storedUserDetails);
 }

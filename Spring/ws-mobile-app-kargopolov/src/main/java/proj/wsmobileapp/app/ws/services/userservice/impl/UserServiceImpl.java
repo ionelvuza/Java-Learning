@@ -29,14 +29,15 @@ public class UserServiceImpl implements UserService{
 	public UserRest createUser(UserDetailsRequestModel userDetails) {
 		
 		UserRest returnValue = new UserRest();
-		returnValue.setEmail(userDetails.getEmail());
-		returnValue.setFirstName(userDetails.getFirstName());
-		returnValue.setLastName(userDetails.getLastName());
+		String   userId      = utils.generateUserId();
 		
-		String userId = utils.generateUserId();
-		returnValue.setUserId(userId);
+		returnValue.setEmail    (userDetails.getEmail());
+		returnValue.setFirstName(userDetails.getFirstName());
+		returnValue.setLastName (userDetails.getLastName());
+		returnValue.setUserId   (userId);
 		
 		if(users == null) users = new HashMap<>();
+		
 		users.put(userId, returnValue);
 		
 		return returnValue;
@@ -57,12 +58,6 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UserRest createUser(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void deleteUser(String userId) {
 		
 		users.remove(userId);
@@ -70,7 +65,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void updateUser(String userId, UserRest storedUserDetails) {
-		// TODO Auto-generated method stub
+
 		users.put(userId, storedUserDetails);
 	}
 
