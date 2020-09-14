@@ -1,4 +1,4 @@
-package proj.taco.app;
+package proj.tacos.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
