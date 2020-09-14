@@ -1,4 +1,4 @@
-package tacos;
+package proj.tacos.web;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import tacos.Order;
-import tacos.data.OrderRepository;
+import proj.tacos.data.OrderRepository;
+import proj.tacos.model.Order;
 
 @Controller
 @RequestMapping("/orders")

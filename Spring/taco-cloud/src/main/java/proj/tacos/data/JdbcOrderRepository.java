@@ -1,4 +1,4 @@
-package tacos.data;
+package proj.tacos.data;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import tacos.Taco;
-import tacos.Order;
+import proj.tacos.model.Order;
+import proj.tacos.model.Taco;
 
 @Repository
 public class JdbcOrderRepository implements OrderRepository {

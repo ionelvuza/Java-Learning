@@ -1,6 +1,6 @@
-package tacos.data;
+package proj.tacos.data;
 
-import tacos.Taco;
+import proj.tacos.model.Taco;
 
 public interface TacoRepository  {
 

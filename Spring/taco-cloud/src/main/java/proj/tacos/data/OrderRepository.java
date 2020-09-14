@@ -1,6 +1,6 @@
-package tacos.data;
+package proj.tacos.data;
 
-import tacos.Order;
+import proj.tacos.model.Order;
 
 public interface OrderRepository {
 

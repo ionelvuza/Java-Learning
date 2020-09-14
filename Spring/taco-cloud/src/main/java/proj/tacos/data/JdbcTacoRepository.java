@@ -1,4 +1,4 @@
-package tacos.data;
+package proj.tacos.data;
 
 import java.sql.Timestamp;
 import java.sql.Types;
@@ -12,8 +12,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import tacos.Ingredient;
-import tacos.Taco;
+import proj.tacos.model.Ingredient;
+import proj.tacos.model.Taco;
 
 @Repository
 public class JdbcTacoRepository implements TacoRepository {

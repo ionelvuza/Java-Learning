@@ -1,6 +1,6 @@
-package tacos.data;
+package proj.tacos.data;
 
-import tacos.Ingredient;
+import proj.tacos.model.Ingredient;
 
 public interface IngredientRepository {
 

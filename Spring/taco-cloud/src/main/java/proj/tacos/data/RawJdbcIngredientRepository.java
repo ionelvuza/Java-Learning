@@ -1,4 +1,4 @@
-package tacos.data;
+package proj.tacos.data;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import tacos.Ingredient;
+import proj.tacos.model.Ingredient;
 
 /**
  * Raw implementation of {@link IngredientRepository} for
