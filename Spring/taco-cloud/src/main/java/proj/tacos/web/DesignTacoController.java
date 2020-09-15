@@ -27,17 +27,12 @@ import proj.tacos.model.Ingredient.Type;
 @RequestMapping("/design")
 @SessionAttributes("order")
 public class DesignTacoController {
-  
 
-	
   private final IngredientRepository ingredientRepo;
-  
-  
-  private TacoRepository designRepo;
 
-  
+  private TacoRepository tacoRepo;
+
   /*
-  @Autowired
   public DesignTacoController(IngredientRepository ingredientRepo) {
     this.ingredientRepo = ingredientRepo;
   }
@@ -45,19 +40,12 @@ public class DesignTacoController {
 
   @Autowired
   public DesignTacoController(
-        IngredientRepository ingredientRepo, 
-        TacoRepository designRepo) {
+        IngredientRepository ingredientRepo,
+        TacoRepository tacoRepo) {
     this.ingredientRepo = ingredientRepo;
-    this.designRepo = designRepo;
+    this.tacoRepo = tacoRepo;
   }
 
-  
-  /*
-  ...
-  
-   */
-  
-  
   @ModelAttribute
   public void addIngredientsToModel(Model model) {
     List<Ingredient> ingredients = new ArrayList<>();
@@ -70,24 +58,18 @@ public class DesignTacoController {
     }
   }
 
-  
   @ModelAttribute(name = "order")
   public Order order() {
     return new Order();
   }
-  
+
   @ModelAttribute(name = "taco")
   public Taco taco() {
     return new Taco();
   }
-  
 
-  /*
-  ...
-  
-   */
-  
-  
+
+
   @GetMapping
   public String showDesignForm(Model model) {
     return "design";
@@ -95,19 +77,20 @@ public class DesignTacoController {
 
   @PostMapping
   public String processDesign(
-      @Valid Taco design, Errors errors, 
+      @Valid Taco taco, Errors errors,
       @ModelAttribute Order order) {
 
     if (errors.hasErrors()) {
       return "design";
     }
 
-    Taco saved = designRepo.save(design);
+    Taco saved = tacoRepo.save(taco);
     order.addDesign(saved);
 
     return "redirect:/orders/current";
   }
-  
+
+
   private List<Ingredient> filterByType(
       List<Ingredient> ingredients, Type type) {
     return ingredients
@@ -117,8 +100,8 @@ public class DesignTacoController {
   }
 
   /*
+   ...
+  */
 
-  ...
-   */
 
 }
